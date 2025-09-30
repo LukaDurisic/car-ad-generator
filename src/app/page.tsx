@@ -1,44 +1,56 @@
 "use client";
-
 import { useState } from "react";
+import { Search } from "lucide-react";
 import styles from "./page.module.css";
-import { FaSearch } from "react-icons/fa";
+import Image from "next/image";
+import StreetIcon from "@/app/_assets/streets.png";
 
-export default function Home() {
-  const [vin, setVin] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Looking up data for VIN: ${vin}`);
-  };
+export default function HeroSection() {
+  const [query, setQuery] = useState("");
 
   return (
-    <main className={styles.hero}>
-      <div className={styles.background}></div>
-      <div className={styles.overlay}></div>
-
-      <div className={styles.content}>
-        <h1 className={styles.title}>Decode Your Vehicle Instantly</h1>
-        <p className={styles.subtitle}>
-          Get detailed vehicle history, market value, specifications, and more
-        </p>
-
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.searchBox}>
-            <FaSearch className={styles.icon} />
-            <input
-              type="text"
-              placeholder="Enter VIN, model, or brand..."
-              value={vin}
-              onChange={(e) => setVin(e.target.value)}
-              className={styles.input}
-            />
-            <button type="submit" className={styles.button}>
-              Search
-            </button>
-          </div>
-        </form>
+    <section className={styles.hero}>
+      <div className={styles.overlay} />
+      <div className={styles.daka}>
+        <Image
+          alt="daka"
+          src={StreetIcon}
+          height={30}
+          width={30}
+          style={{ backgroundColor: "white" }}
+        />{" "}
+        Đaka d.d.
       </div>
-    </main>
+      <div className={styles.leftContainer}>
+        New way of creating
+        <span className={styles.highlight}> car ads!</span>
+        <p className={styles.subtitle}>
+          Explore over <span className={styles.highlight}>5M+ cars</span> and
+          research from <span className={styles.highlight}>4M+ car ads</span>
+        </p>
+      </div>
+      <div className={styles.content}>
+        <h1 className={styles.title}>
+          Generate car ad in <span className={styles.highlight}>seconds</span>
+        </h1>
+
+        <div className={styles.searchWrapper}>
+          <Search className={styles.searchIcon} />
+          <input
+            type="text"
+            maxLength={17}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Enter your VIN number..."
+            className={styles.searchInput}
+          />
+          <div className={styles.loadingWrapper}>
+            {query.split("").map((char, idx) => (
+              <span key={idx} className={styles.loadingDot} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
