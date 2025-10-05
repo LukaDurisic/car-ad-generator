@@ -12,7 +12,9 @@ export default function Pricing() {
       <h2 className={styles.title}>Choose Your Plan</h2>
 
       <div className={styles.toggle}>
-        <span className={!yearly ? styles.active : ""}>Monthly</span>
+        <span className={!yearly ? styles.active : styles.inactive}>
+          Monthly
+        </span>
         <label className={styles.switch}>
           <input
             type="checkbox"
@@ -21,7 +23,7 @@ export default function Pricing() {
           />
           <span className={styles.slider}></span>
         </label>
-        <span className={yearly ? styles.active : ""}>Yearly</span>
+        <span className={yearly ? styles.active : styles.inactive}>Yearly</span>
       </div>
 
       <div className={styles.cards}>
@@ -29,7 +31,7 @@ export default function Pricing() {
           <div key={i} className={styles.card}>
             <h3>Plan {i + 1}</h3>
             <p className={styles.price}>${price}</p>
-            <ul>
+            <ul className={styles.list}>
               <li>Feature A</li>
               <li>Feature B</li>
               <li>Feature C</li>

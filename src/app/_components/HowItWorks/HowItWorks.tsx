@@ -7,7 +7,7 @@ export default function HowItWorks() {
       <div className={styles.steps}>
         <div className={styles.step}>
           <span className={styles.number}>1</span>
-          <p>Enter your VIN number or search by model.</p>
+          <p>Enter your VIN number.</p>
         </div>
         <div className={styles.step}>
           <span className={styles.number}>2</span>
