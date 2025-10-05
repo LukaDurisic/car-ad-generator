@@ -1,12 +1,21 @@
+body,
+html {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 .hero {
+  position: relative;
   color: white;
   overflow: hidden;
   background-color: black;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .overlay {
@@ -15,53 +24,39 @@
   background: url("https://images.unsplash.com/photo-1503376780353-7e6692767b70")
     center/cover no-repeat;
   opacity: 0.25;
+  z-index: 0;
+  width: 100vw;
 }
 
 .daka {
   position: absolute;
   top: 20px;
   left: 20px;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 800;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: white;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .leftContainer {
-  /* display: flex;
-    justify-content: flex-start; */
+  z-index: 2;
   padding: 50px;
-  width: 40%;
-  font-size: 90px;
+  width: 45%;
+  font-size: 80px;
   font-weight: 800;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: white;
+  line-height: 1.1;
   opacity: 0;
   transform: translateX(-40px);
   animation: slideIn 1s ease forwards;
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 800px;
-  padding: 50px;
-  width: 40%;
-  margin: 3%;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.3);
-  min-height: 350px;
-}
-
-.title {
-  font-size: 3rem;
-  font-weight: 800;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.highlight {
+.leftContainer .highlight {
   color: #e63946;
 }
 
@@ -72,29 +67,59 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.bold {
-  font-weight: 600;
-  color: white;
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+  width: 45%;
+  margin: 40px;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
+  min-height: 350px;
+  margin-right: 70px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.highlight {
+  color: #e63946;
+}
+
+.stepDescription {
+  font-size: 18px;
+  color: #fff;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 400;
+  margin-top: 1rem;
 }
 
 .searchWrapper {
   position: relative;
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .searchInput {
   width: 100%;
   max-width: 480px;
-  padding: 1rem 1rem 1rem 3rem;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  background: transparent;
   color: white;
   font-size: 16px;
   outline: none;
+  border: none;
 }
 
 .searchInput::placeholder {
@@ -102,8 +127,8 @@
 }
 
 .searchIcon {
-  position: absolute;
-  left: calc(50% - 255px);
+  /* position: absolute;
+  left: calc(50% - 240px); */
   width: 20px;
   height: 20px;
   color: #aaa;
@@ -124,20 +149,6 @@
   animation: bounce 0.6s infinite alternate;
 }
 
-.loadingDot:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.loadingDot:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.stepDescription {
-  font-size: 18px;
-  color: #fff;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-}
-
 .btnContainer {
   width: 100%;
   display: flex;
@@ -148,7 +159,7 @@
 
 .generateBtn {
   height: 46px;
-  width: 140px;
+  width: 160px;
   border-radius: 32px;
   background-color: #ff3f4f9b;
   display: flex;
@@ -159,6 +170,120 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-weight: 400;
   cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 20px;
+}
+
+.generateBtn:hover {
+  background-color: #ff3f4f;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .leftContainer {
+    width: 100%;
+    padding: 20px;
+    font-size: 60px;
+    text-align: center;
+    transform: translateX(0);
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .content {
+    width: 90%;
+    margin: 0;
+    margin-top: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 50px;
+  }
+
+  .daka {
+    font-size: 24px;
+  }
+
+  .leftContainer {
+    width: 90%;
+    font-size: 42px;
+    padding: 20px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .content {
+    width: 90%;
+    margin-top: 20px;
+    border-radius: 32px;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .stepDescription {
+    font-size: 15px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+    padding: 14px 0px;
+  }
+
+  .searchWrapper {
+    justify-content: flex-start;
+    padding: 0px 15px;
+    gap: 8px;
+  }
+
+  .generateBtn {
+    width: 130px;
+    font-size: 15px;
+    margin-left: -75px;
+  }
+}
+
+@media (max-width: 680px) {
+  .content {
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftContainer {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .content {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
 }
 
 @keyframes bounce {
