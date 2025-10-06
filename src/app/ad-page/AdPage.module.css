@@ -1,0 +1,137 @@
+body,
+html {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: black;
+}
+
+.section {
+  background-color: #111;
+  color: white;
+  height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-bottom: 3rem;
+}
+
+.highlight {
+  color: #e63946;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.imageWrapper {
+  flex: 1;
+  min-width: 320px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.details {
+  flex: 1;
+  min-width: 320px;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carName {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.specs li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #ccc;
+}
+
+.specs li span {
+  color: #fff;
+  font-weight: bold;
+}
+
+.description h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #e63946;
+}
+
+.description p {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.button {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #e63946;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.button:hover {
+  background-color: #ff4d5a;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details {
+    max-width: 100%;
+  }
+
+  .imageWrapper {
+    max-width: 100%;
+  }
+}

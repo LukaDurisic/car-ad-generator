@@ -11,11 +11,11 @@ export default function HowItWorks() {
         </div>
         <div className={styles.step}>
           <span className={styles.number}>2</span>
-          <p>Our AI instantly decodes car details & history.</p>
+          <p>Our AI instantly decodes car details.</p>
         </div>
         <div className={styles.step}>
           <span className={styles.number}>3</span>
-          <p>Generate car ads in seconds — ready to publish.</p>
+          <p>Generate car ad in seconds, ready to publish.</p>
         </div>
       </div>
     </section>

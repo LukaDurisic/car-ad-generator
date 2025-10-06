@@ -1,14 +1,48 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import styles from "./Pricing.module.css";
 
 export default function Pricing() {
   const [yearly, setYearly] = useState(false);
-
   const prices = yearly ? [99, 199, 299] : [10, 20, 30];
 
+  // Controls animation start
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true, // only once
+    threshold: 0.3, // 20% visible triggers animation
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [inView, controls]);
+
+  // Variants for container & cards
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.4,
+      },
+    },
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
-    <section className={styles.section}>
+    <section ref={ref} className={styles.section}>
       <h2 className={styles.title}>Choose Your Plan</h2>
 
       <div className={styles.toggle}>
@@ -26,9 +60,14 @@ export default function Pricing() {
         <span className={yearly ? styles.active : styles.inactive}>Yearly</span>
       </div>
 
-      <div className={styles.cards}>
+      <motion.div
+        className={styles.cards}
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+      >
         {prices.map((price, i) => (
-          <div key={i} className={styles.card}>
+          <motion.div key={i} className={styles.card} variants={cardVariants}>
             <h3>Plan {i + 1}</h3>
             <p className={styles.price}>${price}</p>
             <ul className={styles.list}>
@@ -37,9 +76,9 @@ export default function Pricing() {
               <li>Feature C</li>
             </ul>
             <button className={styles.button}>Select</button>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
