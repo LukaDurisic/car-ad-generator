@@ -4,8 +4,10 @@ import { Search } from "lucide-react";
 import styles from "./HeroSection.module.css";
 import Image from "next/image";
 import StreetIcon from "@/app/_assets/streets.png";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const fullText =
     "All you need to do is input your VIN number and your ad will be done shortly with assistance of AI!";
@@ -51,13 +53,7 @@ export default function HeroSection() {
           Generate car ad in <span className={styles.highlight}>seconds</span>
         </h1>
 
-        <div className={styles.stepDescription}>
-          {/* All you need to do is input your{" "}
-          <span className={styles.highlight}>VIN number</span> and your ad will{" "}
-          <br />
-          be done shortly with assistance of AI! */}
-          {typedText}
-        </div>
+        <div className={styles.stepDescription}>{typedText}</div>
 
         <div className={styles.searchWrapper}>
           <Search className={styles.searchIcon} />
@@ -76,7 +72,12 @@ export default function HeroSection() {
           </div>
         </div>
         <div className={styles.btnContainer}>
-          <div className={styles.generateBtn}>Generate ad</div>
+          <div
+            className={styles.generateBtn}
+            onClick={() => router.push("/ad-page")}
+          >
+            Generate ad
+          </div>
         </div>
       </div>
     </section>
