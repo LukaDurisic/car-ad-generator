@@ -3,23 +3,24 @@
 import Image from "next/image";
 import styles from "./AdPage.module.css";
 import FraneIcon from "@/app/_assets/Franee46.jpeg";
+import { useRouter } from "next/navigation";
+
+const car = {
+  make: "BMW",
+  model: "E46 328i",
+  year: 2000,
+  engine: "2.8L I6 (M52TUB28)",
+  transmission: "5-speed manual",
+  drivetrain: "RWD",
+  color: "Titanium Silver Metallic",
+  mileage: "156,000 km",
+  image: FraneIcon,
+  aiDescription:
+    "This BMW E46 328i represents the essence of early-2000s driving pleasure. Equipped with the legendary inline-six engine, precise manual transmission, and timeless design, it blends performance and refinement. The chassis delivers excellent balance and steering feedback — an authentic BMW experience for enthusiasts who value pure, analog connection to the road.",
+};
 
 export default function VinResult() {
-  // Mock data — replace with fetched VIN data later
-  const car = {
-    make: "BMW",
-    model: "E46 328i",
-    year: 2000,
-    engine: "2.8L I6 (M52TUB28)",
-    transmission: "5-speed manual",
-    drivetrain: "RWD",
-    color: "Titanium Silver Metallic",
-    mileage: "156,000 km",
-    image: FraneIcon,
-    aiDescription:
-      "This BMW E46 328i represents the essence of early-2000s driving pleasure. Equipped with the legendary inline-six engine, precise manual transmission, and timeless design, it blends performance and refinement. The chassis delivers excellent balance and steering feedback — an authentic BMW experience for enthusiasts who value pure, analog connection to the road.",
-  };
-
+  const router = useRouter();
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -70,7 +71,9 @@ export default function VinResult() {
               <p>{car.aiDescription}</p>
             </div>
 
-            <button className={styles.button}>Generate Again</button>
+            <button className={styles.button} onClick={() => router.push("/")}>
+              Generate Again
+            </button>
           </div>
         </div>
       </div>
