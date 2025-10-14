@@ -289,11 +289,15 @@ html {
 
   .btnContainer {
     padding-bottom: 0px;
+    margin-bottom: 10px;
   }
 
   .title {
     font-size: 32px;
     margin-bottom: 24px;
+  }
+  .generateBtn {
+    margin-left: -55px;
   }
 }
 
